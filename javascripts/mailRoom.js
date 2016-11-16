@@ -27,6 +27,16 @@ var MusicHistory = (function(oldMH){
     MusicHistory.writeSelect();
   };
   
+  oldMH.getSelectList = function(prop){
+    let tempArr = [];
+    for (let i = 0; i < songArray.length; i++){
+      if (!tempArr.includes(songArray[i][prop])){
+        tempArr.push(songArray[i][prop]);
+      }
+    }
+    return tempArr;
+  };
+  
   return oldMH;
 
 })(MusicHistory || {});
