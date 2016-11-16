@@ -1,21 +1,31 @@
-// Include Normalize in the final CSS
-@import 'normalize';
 // Include our fav GoogleFonts
 @import url('https://fonts.googleapis.com/css?family=Amatic+SC|Permanent+Marker|Proza+Libre|Raleway');
 
 // Set up color schema
   // Hex
-$hex-color-prime: #94ff2c;
-$hex-color-second: #6e3dcc;
-$hex-color-tertia: #efd6ff;
-$hex-color-acc-light: #56cc6a;
-$hex-color-acc-dark: #79997e;
-  // rgb
-$rgb-color-prime: rgb(148,255,44);
-$rgb-color-second: rgb(110,61,204);
-$rgb-color-tertia: rgb(239,214,255);
-$rgb-color-acc-light: rgb(86,204,106);
-$rgb-color-acc-dark: rgb(121,153,126);
+$hex-prime0: #553400;
+$hex-prime1: #805615;
+$hex-prime2: #aa7e39;
+$hex-prime3: #d4ab6a;
+$hex-prime4: #ffdeaa;
+
+$hex-second0: #051c38;
+$hex-second1: #143153;
+$hex-second2: #2b4a6f;
+$hex-second3: #486888;
+$hex-second4: #7488a7;
+
+  // rgba
+$rgba-prime0: rgba(85,52,0,.8);
+$rgba-prime1: rgba(128,86,21,.8);
+$rgba-prime2: rgba(170,126,57,.8);
+$rgba-prime3: rgba(212,171,106,.8);
+$rgba-prime4: rgba(255,222,170,.8);
+$rgba-second0: rgba(5,28,56,.8);
+$rgba-second1: rgba(20,49,83,.8);
+$rgba-second2: rgba(43,74,111,.8);
+$rgba-second3: rgba(75,104,139,.8);
+$rgba-second4: rgba(116,139,167,.8);
 
 // Set up font families
 $hw-head-stack: 'Permanent Marker', cursive;
@@ -33,10 +43,10 @@ body {
 #wrapper {
   width: 90%;
   max-width: 1280px;
-  background: $hex-color-tertia;
-  padding: 8em 2.5% 2em 2.5%;
-  min-height: 100vh;
-  margin: 0 auto;
+  background: $hex-prime4;
+  height: 85vh;
+  overflow-y: auto;
+  margin: 10vh auto 5vh auto;
 
   h1, h2, h3, h4, h5 {
     font-family: $hw-head-stack;
@@ -47,28 +57,31 @@ body {
 #page-head {
   width: 100%;
   position: fixed;
-  background: $hex-color-prime;
-  color: $rgb-color-second;
-  box-shadow: inset 0 0 3em $rgb-color-acc-dark;
+  top: 0;
+  height: 10vh;
+  background: $hex-prime0;
+  color: $hex-prime1;
+  box-shadow: inset 0 0 3em $rgba-second1;
 
   h1 {
-    color: $rgb-color-acc-light;
+    color: $hex-prime1;
     font-size: 4em;
     font-weight: bolder;
-    margin-bottom: -.25em;
-    margin-top: .5em;
-    text-shadow: .05em -.05em 0 $rgb-color-second;
+    margin-bottom: -.1em;
+    margin-top: .25em;
+    text-shadow: .05em -.05em .1em $rgba-second0;
   }
 }
 
 #page-foot {
   width: 100%;
-  // position: fixed;
-  background: $hex-color-prime;
-  color: $rgb-color-second;
-  box-shadow: inset 0 0 3em $rgb-color-acc-dark;
+  position: fixed;
+  bottom: 0;
+  height: 5vh;
+  background: $hex-prime0;
+  color: $hex-prime1;
+  box-shadow: inset 0 0 3em $rgba-second1;
   text-align: center;
-  padding: 1em;
 
   p {
     font-weight: bold;
