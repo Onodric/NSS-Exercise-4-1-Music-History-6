@@ -45,8 +45,7 @@ body {
 /* GENERAL ****************************************** */
 body {
   width: 75%;
-  margin: 0 auto;
-  font-size: 1.5em; }
+  margin: 0 auto; }
 
 header {
   background-color: #ffb4b0;
@@ -129,7 +128,7 @@ aside select {
   border-bottom: 3px solid rgba(100, 100, 100, 0.5); }
 
 .card h2 {
-  width: 90%;
+  width: 80%;
   display: inline-block; }
 
 .card ul {
@@ -289,4 +288,4 @@ input[type=range].sidebar-range:focus::-ms-fill-lower {
 input[type=range].sidebar-range:focus::-ms-fill-upper {
   background: #fff; }
 
-/*# sourceMappingURL=style.css.map */
+/*# sourceMappingURL=main.css.map */

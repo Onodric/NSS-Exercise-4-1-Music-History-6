@@ -1,42 +1,52 @@
 "use strict";
-var MusicHistory = (function(oldMH){
-  var songArray = [];
 
-  oldMH.getSongArray = function(){
+let DataRequest = require('./dataRequester');
+let DomGuy = require('./domGuy');
+
+let songArray = [];
+
+let request = function(data){
+  DataRequest(data, addArray);
+};
+
+let getSongArray = function(){
 // Returns the internal array of songs
-    return Array.from(songArray);
-  };
+  return Array.from(songArray);
+};
 
-  oldMH.addSong = function (obj) {
-// Adds the object to the internal array
-    songArray.push(obj);
-  };
+let addSong = function (obj) {
+  songArray.push(obj);
+  DomGuy.writeSong(obj, (songArray.length - 1));
+  DomGuy.writeSelect(getSelectList());
+};
 
-  oldMH.addArray = function (arr) {
-    for (let i = 0; i < arr.length; i++ ){
-      MusicHistory.addSong(arr[i]);
-    }
-    MusicHistory.writeArray(MusicHistory.getSongArray());
-  };
+let addArray = function (arr) {
+  for (let i = 0; i < arr.length; i++ ){
+    addSong(arr[i]);
+  }
+};
 
-  oldMH.removeSong = function (event) {
-// Removes the specified song from the internal array
-    let tempIndex = event.target.id;
-    songArray.splice(tempIndex, 1);
-// Now just rebuild the select lists
-    MusicHistory.writeSelect();
-  };
+let removeSong = function (event) {
+  let tempIndex = event.target.id;
+  songArray.splice(tempIndex, 1);
+  DomGuy.deleSong(event);
+  DomGuy.writeSelect(getSelectList());
+};
   
-  oldMH.getSelectList = function(prop){
-    let tempArr = [];
+let getSelectList = function(){
+  let selectOptions = {
+      artist: [],
+      album: [],
+      genre: []
+  };
+  for (let key in selectOptions){
     for (let i = 0; i < songArray.length; i++){
-      if (!tempArr.includes(songArray[i][prop])){
-        tempArr.push(songArray[i][prop]);
+      if (!selectOptions[key].includes(songArray[i][key])){
+        selectOptions[key].push(songArray[i][key]);
       }
     }
-    return tempArr;
-  };
-  
-  return oldMH;
+  }
+  return selectOptions;
+};
 
-})(MusicHistory || {});
+module.exports = {addSong, addArray, removeSong, getSelectList, request};
