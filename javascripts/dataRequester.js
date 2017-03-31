@@ -1,10 +1,8 @@
 "use strict";
 // THIS SHOULD GET SONG DATA from JSON. Nothing else.
-var MusicHistory = (function(oldMH){
-
 // PASS IT: DataURL as string and a callbackFn
 // OFFER IT TO: the internal array holder and dom builder
-  oldMH.loadJSON = function(jsonURL, cbFunc){
+var loadJSON = function(jsonURL, cbFunc){
     $.ajax({
       url: jsonURL,
     })
@@ -12,11 +10,11 @@ var MusicHistory = (function(oldMH){
       cbFunc(data.songs);
     })
     .fail( () => {
+      console.log("Sorry, I failed to receive data!");
     })
     .always( () => {
+      console.log("loadJSON has run.");
     });
   };  
 
-  return oldMH;
-
-})(MusicHistory || {});
+module.exports = loadJSON;
